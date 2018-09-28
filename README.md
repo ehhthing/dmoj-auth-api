@@ -7,9 +7,25 @@ This API lets third parties verify that a user has control over a DMOJ account. 
 #### `/v1/register/:username` 
 Request a token from the API, this token should be added to anywhere on the user's profile description and can be removed after confirmation. Tokens by default expire after 10 minutes.
 
+**Example Response**
+```javascript
+{
+    "status": 200,
+    "token": "10r6pa2o7h4jmmn14op",
+    "username": "example"
+}
+```
+
 #### `/v1/authenticate/:token`
 Verify that the token has been added to the user's profile, once you call this with a valid token, the token will be invalidated. Users can remove this from their profile after calling this.
 
+**Example Response**
+```javascript
+{
+    "status": 200,
+    "authenticated": true // if this is false, then the user has not authenticated yet and a new token needs to be generated
+}
+```
 
 ## Config
 
