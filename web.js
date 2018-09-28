@@ -49,10 +49,10 @@ fastify.get("/v1/authenticate/:token", async function (req, res) {
         return res.code(400).send(config.errors.invalidToken);
     }
     const username = cache.get(token);
-    cache.del(token);
     if (!username) {
         return res.code(400).send(config.errors.invalidToken);
     }
+    cache.del(token);
     try {
         const response = await request(config.dmoj.userProfileEndpoint + username);
         const parsedResponse = parser.parse(response);
