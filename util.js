@@ -16,6 +16,6 @@ module.exports = {
 
     // verify a token as valid
     verifyToken: function (token) {
-        return (typeof token === "string") && (token.length === 16) && (!token.match(config.tokenRegex));
+        return (typeof token === "string") && (token.length > 10) && (token.length < 100) && (!token.match(config.tokenRegex));
     }
 };
